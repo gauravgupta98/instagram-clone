@@ -42,10 +42,12 @@ export function seedDatabase(firebase) {
     },
   ];
 
+  // add all the users
   for (let k = 0; k < users.length; k++) {
     firebase.firestore().collection("users").add(users[k]);
   }
 
+  // add posts for raphael
   for (let i = 1; i <= 5; ++i) {
     firebase
       .firestore()
@@ -64,6 +66,29 @@ export function seedDatabase(firebase) {
           {
             displayName: "orwell",
             comment: "Would you mind if I used this picture?",
+          },
+        ],
+        userLatitude: "40.7128°",
+        userLongitude: "74.0060°",
+        dateCreated: Date.now(),
+      });
+  }
+
+  // add posts for gg
+  for (let i = 1; i <= 3; ++i) {
+    firebase
+      .firestore()
+      .collection("photos")
+      .add({
+        photoId: i,
+        userId: "yFyFGEL5W5Z2zknuymFXp5U55vR2",
+        imageSrc: `/images/users/gg/${i}.jpg`,
+        caption: "This is so much peace",
+        likes: [],
+        comments: [
+          {
+            displayName: "raphael",
+            comment: "Damnnn!",
           },
         ],
         userLatitude: "40.7128°",
