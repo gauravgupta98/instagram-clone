@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import * as ROUTES from "../constants/routes";
 import FirebaseContext from "../context/firebase";
-import { doesUsernameExist } from "../services/firebase";
+import { isUsernameAvailable } from "../services/firebase";
 
 export default function Signup() {
   const history = useHistory();
@@ -24,7 +24,7 @@ export default function Signup() {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    const usernameAvailable = await doesUsernameExist(username);
+    const usernameAvailable = await isUsernameAvailable(username);
 
     if (usernameAvailable) {
       try {
