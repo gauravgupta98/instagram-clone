@@ -2,6 +2,9 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
   },
+  purge: {
+    content: ["./src/**/*.js", "./src/**/**/*.js"],
+  },
   theme: {
     fill: (theme) => ({
       red: theme("colors.red.primary"),
@@ -23,6 +26,11 @@ module.exports = {
       red: {
         primary: "#ed4956",
       },
+    },
+  },
+  variants: {
+    extend: {
+      display: ["group-hover"],
     },
   },
 };
