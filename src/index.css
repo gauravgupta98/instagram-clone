@@ -1,0 +1,7 @@
+*,*:focus,*:hover{
+    outline: none;
+}
+
+body {
+  background-color: #fafafa;
+}

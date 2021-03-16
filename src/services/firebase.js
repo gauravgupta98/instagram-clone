@@ -1,4 +1,4 @@
-import { firebase, FieldValue } from "../lib/firebase";
+import { firebase } from "../lib/firebase";
 
 // method which checks if username already exists.
 // returns false if already exist, else false.

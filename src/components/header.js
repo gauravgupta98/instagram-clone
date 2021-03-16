@@ -1,13 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import * as ROUTES from "../constants/routes";
 import FirebaseContext from "../context/firebase";
-import UserContext from "../context/firebase";
+import UserContext from "../context/user";
+import useUser from "../hooks/use-user";
 
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
-  const { user } = useContext(UserContext);
+  const { user: loggedInUser } = useContext(UserContext);
+  const { user } = useUser(loggedInUser?.uid);
+  const history = useHistory();
 
   function profilePictureExists(url) {
     let http = new XMLHttpRequest();
@@ -56,10 +59,14 @@ export default function Header() {
                 <button
                   type="button"
                   title="Sign Out"
-                  onClick={() => firebase.auth().signOut()}
+                  onClick={() => {
+                    firebase.auth().signOut();
+                    history.push(ROUTES.LOGIN);
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter") {
                       firebase.auth().signOut();
+                      history.push(ROUTES.LOGIN);
                     }
                   }}
                 >
