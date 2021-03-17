@@ -12,6 +12,8 @@ export async function isUsernameAvailable(username) {
   return result.docs.length === 0;
 }
 
+// method which retrieves the user from firebase
+// where userId is the logged in user.
 export async function getUserByUserId(userId) {
   const result = await firebase
     .firestore()
