@@ -7,14 +7,12 @@ import Suggestions from "./suggestions";
 
 export default function Sidebar() {
   const { user: loggedInUser } = useContext(UserContext);
-  const {
-    user: { fullName, username, userId },
-  } = useUser(loggedInUser?.uid);
+  const { user } = useUser(loggedInUser?.uid);
 
   return (
     <div className="p-4">
-      <User username={username} fullName={fullName} />
-      <Suggestions userId={userId} />
+      <User username={user?.username} fullName={user?.fullName} />
+      <Suggestions userId={user?.userId} />
     </div>
   );
 }

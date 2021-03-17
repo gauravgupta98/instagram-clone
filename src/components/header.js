@@ -12,15 +12,6 @@ export default function Header() {
   const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
 
-  function profilePictureExists(url) {
-    let http = new XMLHttpRequest();
-
-    http.open("HEAD", url, false);
-    http.send();
-
-    return http.status === 200;
-  }
-
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
@@ -139,3 +130,12 @@ export default function Header() {
     </header>
   );
 }
+
+export const profilePictureExists = (url) => {
+  let http = new XMLHttpRequest();
+
+  http.open("HEAD", url, false);
+  http.send();
+
+  return http.status === 200;
+};
