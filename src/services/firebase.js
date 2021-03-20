@@ -1,4 +1,4 @@
-import { firebase } from "../lib/firebase";
+import { firebase, FieldValue } from "../lib/firebase";
 
 // method which checks if username already exists.
 // returns false if already exist, else false.
@@ -40,4 +40,40 @@ export async function getSuggestedProfiles(userId, following) {
       (profile) =>
         profile.userId !== userId && !following.includes(profile.userId)
     );
+}
+
+// method to update the following of the user whenever
+// user follows or unfollows any new profile.
+export async function updateLoggedInUserFollowing(
+  loggedInUserDocId,
+  profileId,
+  isFollowingProfile
+) {
+  return firebase
+    .firestore()
+    .collection("users")
+    .doc(loggedInUserDocId)
+    .update({
+      following: isFollowingProfile
+        ? FieldValue.arrayRemove(profileId)
+        : FieldValue.arrayUnion(profileId),
+    });
+}
+
+// method to update the followers of the user whenever
+// someone follows or unfollows their profile.
+export async function updateFollowedUserFollowers(
+  profileDocId,
+  loggedInUserDocId,
+  isFollowingProfile
+) {
+  return firebase
+    .firestore()
+    .collection("users")
+    .doc(profileDocId)
+    .update({
+      followers: isFollowingProfile
+        ? FieldValue.arrayRemove(loggedInUserDocId)
+        : FieldValue.arrayUnion(loggedInUserDocId),
+    });
 }

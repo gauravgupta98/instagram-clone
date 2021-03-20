@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import {
+  updateLoggedInUserFollowing,
+  updateFollowedUserFollowers,
+} from "../../services/firebase";
 import { profilePictureExists } from "../header";
 
 export default function SuggestedProfile({
@@ -9,11 +13,14 @@ export default function SuggestedProfile({
   username,
   profileId,
   userId,
+  loggedInUserDocId,
 }) {
   const [followed, setFollowed] = useState(false);
 
   async function handleFollowUser() {
     setFollowed(true);
+    await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
+    await updateFollowedUserFollowers(profileDocId, userId, false);
   }
 
   return !followed ? (
@@ -61,4 +68,5 @@ SuggestedProfile.propTypes = {
   username: PropTypes.string.isRequired,
   profileId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
+  loggedInUserDocId: PropTypes.string.isRequired,
 };
