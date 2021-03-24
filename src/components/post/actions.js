@@ -19,7 +19,7 @@ export default function Actions({
   const handleToggleLiked = async () => {
     setHasUserLiked((hasUserLiked) => !hasUserLiked);
     handleLike(docId, userId, hasUserLiked);
-    setLikes((likes) => (hasUserLiked ? likes++ : likes--));
+    setLikes((likes) => (hasUserLiked ? likes - 1 : likes + 1));
   };
 
   return (
