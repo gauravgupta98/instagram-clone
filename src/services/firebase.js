@@ -106,3 +106,17 @@ export async function getPhotos(userId, following) {
 
   return photosWithUserDetails;
 }
+
+// updates the likes on the post when user clicks
+// on the like button.
+export async function handleLike(docId, userId, hasUserLiked) {
+  await firebase
+    .firestore()
+    .collection("photos")
+    .doc(docId)
+    .update({
+      likes: hasUserLiked
+        ? FieldValue.arrayRemove(userId)
+        : FieldValue.arrayUnion(userId),
+    });
+}
