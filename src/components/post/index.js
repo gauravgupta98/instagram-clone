@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Header from "./header";
 import Image from "./image";
 import Actions from "./actions";
+import Footer from "./footer";
 
 export default function Post({ content }) {
   const commentInput = useRef(null);
@@ -19,6 +20,7 @@ export default function Post({ content }) {
         likedPhoto={content.userLikedPhoto}
         handleFocus={handleFocus}
       />
+      <Footer caption={content.caption} username={content.username} />
     </div>
   );
 }
