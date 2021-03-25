@@ -124,8 +124,6 @@ export async function handleLike(docId, userId, hasUserLiked) {
 // handles the update of comments array when user
 // adds a new comment.
 export async function handleAddComment(docId, displayName, comment) {
-  console.log("useeeeeeeeee", displayName);
-
   await firebase
     .firestore()
     .collection("photos")
