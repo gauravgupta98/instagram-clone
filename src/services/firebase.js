@@ -120,3 +120,17 @@ export async function handleLike(docId, userId, hasUserLiked) {
         : FieldValue.arrayUnion(userId),
     });
 }
+
+// handles the update of comments array when user
+// adds a new comment.
+export async function handleAddComment(docId, displayName, comment) {
+  console.log("useeeeeeeeee", displayName);
+
+  await firebase
+    .firestore()
+    .collection("photos")
+    .doc(docId)
+    .update({
+      comments: FieldValue.arrayUnion({ displayName, comment }),
+    });
+}
