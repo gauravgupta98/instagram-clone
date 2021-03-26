@@ -29,6 +29,20 @@ export async function getUserByUserId(userId) {
   return user;
 }
 
+// gets tue user by username.
+export async function getUserByUsername(username) {
+  const result = await firebase
+    .firestore()
+    .collection("users")
+    .where("username", "==", username)
+    .get();
+
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+}
+
 // method gets an array of profiles which will be
 // shown to user as suggested profiles to follow.
 export async function getSuggestedProfiles(userId, following) {
