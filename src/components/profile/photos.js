@@ -11,7 +11,7 @@ export default function Photos({ photos }) {
           </>
         ) : photos.length > 0 ? (
           photos.map((photo) => (
-            <div key={photo.docId} className="relative group">
+            <div key={photo.docId} className="relative group cursor-pointer">
               <img
                 className="object-contain h-96 w-full"
                 src={photo.imageSrc}
