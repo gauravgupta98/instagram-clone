@@ -146,3 +146,17 @@ export async function handleAddComment(docId, displayName, comment) {
       comments: FieldValue.arrayUnion({ displayName, comment }),
     });
 }
+
+// gets the user photos from user id.
+export async function getUserPhotosById(userId) {
+  const result = await firebase
+    .firestore()
+    .collection("photos")
+    .where("userId", "==", userId)
+    .get();
+
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+}
