@@ -5,6 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import UserContext from "../../context/user";
 import useUser from "../../hooks/use-user";
 import { profilePictureExists } from "../header";
+import { toggleFollow, isUserFollowingProfile } from "../../services/firebase";
 
 export default function Header({
   photosCount,
@@ -29,13 +30,22 @@ export default function Header({
     setFollowerCount({
       followerCount: isFollowingProfile ? followerCount - 1 : followerCount + 1,
     });
-    //await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
+    await toggleFollow(
+      isFollowingProfile,
+      user.docId,
+      profileDocId,
+      profileUserId,
+      user.userId
+    );
   };
 
   useEffect(() => {
     const isLoggedInUserFollowingProfile = async () => {
-      //const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
-      setIsFollowingProfile(!!true);
+      const isFollowing = await isUserFollowingProfile(
+        user.username,
+        profileUserId
+      );
+      setIsFollowingProfile(isFollowing);
     };
 
     if (user?.username && profileUserId) {
