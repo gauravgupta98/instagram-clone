@@ -5,13 +5,13 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/user-event": "^14.2.1",
     "date-fns": "^2.19.0",
     "firebase": "^9.8.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-loading-skeleton": "^2.2.0",
+    "react-loading-skeleton": "^3.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^1.1.0"
