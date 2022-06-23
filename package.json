@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
+    "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.2.1",
     "date-fns": "^2.19.0",
     "firebase": "^9.8.3",
