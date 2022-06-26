@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.2.1",
-    "date-fns": "^2.19.0",
+    "date-fns": "^2.28.0",
     "firebase": "^9.8.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
