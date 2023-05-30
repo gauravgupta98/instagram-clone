@@ -14,7 +14,7 @@
     "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
-    "web-vitals": "^3.3.1"
+    "web-vitals": "^3.3.2"
   },
   "scripts": {
     "build:css": "postcss src/styles/tailwind.css -o src/styles/app.css",
